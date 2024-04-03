@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const PropertyDesc = () => {
     return (
-        <div>PropertyDesc</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

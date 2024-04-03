@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const Agents = () => {
     return (
-        <div>Agents</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

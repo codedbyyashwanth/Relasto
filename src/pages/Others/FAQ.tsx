@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const FAQ = () => {
     return (
-        <div>FAQ</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

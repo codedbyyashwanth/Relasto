@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const Policy = () => {
     return (
-        <div>Policy</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

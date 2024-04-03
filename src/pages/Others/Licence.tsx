@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const Licence = () => {
     return (
-        <div>Licence</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

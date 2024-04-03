@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const Listings = () => {
     return (
-        <div>Listings</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

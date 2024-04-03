@@ -1,57 +1,61 @@
-import { FC, lazy } from "react";
+import { FC, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/home/Home";
+import Fallback from "./pages/others/Fallback";
 
-const About = lazy(() => import("./pages/Home/About"));
+const About = lazy(() => import("./pages/home/About"));
 
-const Agents = lazy(() => import("./pages/Agents/Agents"));
-const Agent = lazy(() => import("./pages/Agents/Agent"));
+const Agents = lazy(() => import("./pages/agents/Agents"));
+const Agent = lazy(() => import("./pages/agents/Agent"));
 
-const Blog = lazy(() => import("./pages/Article/Blog"));
-const Blogs = lazy(() => import("./pages/Article/Blogs"));
+const Blog = lazy(() => import("./pages/article/Blog"));
+const Blogs = lazy(() => import("./pages/article/Blogs"));
 
-const Login = lazy(() => import("./pages/Auth/Login"));
-const Signup = lazy(() => import("./pages/Auth/Signup"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Signup = lazy(() => import("./pages/auth/Signup"));
 
-const Contact = lazy(() => import("./pages/Others/Contact"));
-const FAQ = lazy(() => import("./pages/Others/FAQ"));
-const Licence = lazy(() => import("./pages/Others/Licence"));
-const Policy = lazy(() => import("./pages/Others/Policy"));
-const NotFound = lazy(() => import("./pages/Others/NotFound"));
+const Contact = lazy(() => import("./pages/others/Contact"));
+const FAQ = lazy(() => import("./pages/others/FAQ"));
+const Licence = lazy(() => import("./pages/others/Licence"));
+const Policy = lazy(() => import("./pages/others/Policy"));
+const NotFound = lazy(() => import("./pages/others/NotFound"));
 
-const Listings = lazy(() => import("./pages/Properties/Listings"));
-const PropertyDesc = lazy(() => import("./pages/Properties/PropertyDesc"));
+const Listings = lazy(() => import("./pages/properties/Listings"));
+const PropertyDesc = lazy(() => import("./pages/properties/PropertyDesc"));
 
 
 const App:FC = () => {
 
     return (
-        <Routes>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="about" element={<About />} />
+        <Suspense fallback={<Fallback />}>
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="home" element={<Home />} />
+                <Route path="about" element={<About />} />
 
-            <Route path="agents" element={<Agents />} />
-            <Route path="agent" element={<Agent />} />
+                <Route path="agents" element={<Agents />}>
+                    <Route path="agent" element={<Agent />} />
+                </Route>
 
-            <Route path="blog" element={<Blog />} />
-            <Route path="blogs" element={<Blogs />} />
+                <Route path="blogs" element={<Blogs />}>
+                    <Route path="blog" element={<Blog />} />
+                </Route>
 
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
+                <Route path="properties" element={<Listings />}>
+                    <Route path="details" element={<PropertyDesc />} />
+                </Route>
 
-            <Route path="contact" element={<Contact />} />
-            <Route path="faq" element={<FAQ />} />
-            <Route path="licence" element={<Licence />} />
-            <Route path="policy" element={<Policy />} />
+                <Route path="login" element={<Login />} />
+                <Route path="signup" element={<Signup />} />
 
-            <Route path="properties" element={<Listings />}>
-                <Route path="details" element={<PropertyDesc />} />
-            </Route>
+                <Route path="contact" element={<Contact />} />
+                <Route path="faq" element={<FAQ />} />
+                <Route path="licence" element={<Licence />} />
+                <Route path="policy" element={<Policy />} />
 
-
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </Suspense>
     )
 }
 

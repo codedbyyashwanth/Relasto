@@ -1,8 +1,11 @@
+import Navbar from "../../components/base/Navbar"
 
 
 const Blog = () => {
     return (
-        <div>Blog</div>
+        <section>
+            <Navbar />
+        </section>
     )
 }
 

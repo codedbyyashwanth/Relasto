@@ -12,3 +12,17 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+@layer components {
+    .btn-primary {
+        @apply py-2.5 px-5 bg-primary-color font-bold text-white rounded-lg text-sm hover:bg-gray-700 transition-all;
+    }
+
+    .container {
+        @apply w-full max-w-[1440px] mx-auto px-4;
+    }
+
+    .motion {
+        @apply transition ease-in-out duration-500;
+    }
+}
